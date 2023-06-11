@@ -1,0 +1,270 @@
+OOPS - 05 - Inheritance
+
+
+Inheritance - a new class is derived from an existing class.
+
+
+class Anala {
+  String name;
+  public void eat() {
+    System.out.println("I am Happy ig");
+  }
+}
+class ME extends Anala {
+  public void display() {
+    System.out.println("My name is " + name);
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    ME labrador = new ME();
+    labrador.name = "Anala. ";
+    labrador.display();
+    labrador.eat();
+
+  }
+}
+
+o/p:
+My name is Anala. 
+I am Happy ig
+
+------------------------
+
+class Calculation {
+   int z;
+	
+   public void addition(int x, int y) {
+      z = x + y;
+      System.out.println("sum:"+z);
+   }
+	
+   public void Subtraction(int x, int y) {
+      z = x - y;
+      System.out.println("difference:"+z);
+   }
+}
+
+public class Cal extends Calculation {
+   public void multiplication(int x, int y) {
+      z = x * y;
+      System.out.println("product"+z);
+   }
+	
+   public static void main(String args[]) {
+      int a = 20, b = 10;
+      Cal demo = new Cal();
+      demo.addition(a, b);
+      demo.Subtraction(a, b);
+      demo.multiplication(a, b);
+   }
+}
+
+o/p:
+sum :30
+difference:10
+product:200
+
+-----------------------------
+
+class Superclass {
+   int age;
+
+   Superclass(int age) {
+      this.age = age; 		 
+   }
+
+   public void getAge() {
+      System.out.println("The value of the variable named age in super class is: " +age);
+   }
+}
+
+public class Subclass extends Superclass {
+   Subclass(int age) {
+      super(age);
+   }
+
+   public static void main(String argd[]) {
+      Subclass s = new Subclass(24);
+      s.getAge();
+   }
+}
+
+o/p:
+The value of the variable named age in super class is: 24
+
+-------------------------
+
+class Electronics {
+public Electronics(){
+System.out.println("Class Electronics");
+}
+public void deviceType() {
+System.out.println("Device Type: Electronics");
+}
+}
+class Grinder extends Electronics {
+public Grinder() {
+System.out.println("Class Grinder");
+}
+public void category() {
+System.out.println("Category - Grinder");
+}
+}
+class WetGrinder extends Grinder {
+public WetGrinder() {
+System.out.println("Class WetGrinder");
+}
+public void grinding_tech() {
+System.out.println("Grinding Technology- WetGrinder");
+}
+}
+public class Tester {
+public static void main(String[] arguments) {
+WetGrinder wt= new WetGrinder();
+wt.deviceType();
+wt.category();
+wt.grinding_tech();
+}
+}
+
+----------------------------
+
+class Animal {
+}
+
+class Mammal extends Animal {
+}
+
+class Reptile extends Animal {
+}
+
+public class Dog extends Mammal {
+
+   public static void main(String args[]) {
+      Animal a = new Animal();
+      Mammal m = new Mammal();
+      Dog d = new Dog();
+
+      System.out.println(m instanceof Animal);
+      System.out.println(d instanceof Mammal);
+      System.out.println(d instanceof Animal);
+   }
+}
+
+----------------------------
+
+interface Animal{}
+class Mammal implements Animal{}
+
+public class Dog extends Mammal {
+
+   public static void main(String args[]) {
+      Mammal m = new Mammal();
+      Dog d = new Dog();
+
+      System.out.println(m instanceof Animal);
+      System.out.println(d instanceof Mammal);
+      System.out.println(d instanceof Animal);
+   }
+}
+
+----------------------------
+
+public class Animal {
+
+	private boolean vegetarian;
+
+	private String eats;
+
+	private int noOfLegs;
+
+	public Animal(){}
+
+	public Animal(boolean veg, String food, int legs){
+		this.vegetarian = veg;
+		this.eats = food;
+		this.noOfLegs = legs;
+	}
+
+	public boolean isVegetarian() {
+		return vegetarian;
+	}
+
+	public void setVegetarian(boolean vegetarian) {
+		this.vegetarian = vegetarian;
+	}
+
+	public String getEats() {
+		return eats;
+	}
+
+	public void setEats(String eats) {
+		this.eats = eats;
+	}
+
+	public int getNoOfLegs() {
+		return noOfLegs;
+	}
+
+	public void setNoOfLegs(int noOfLegs) {
+		this.noOfLegs = noOfLegs;
+	}
+
+}
+
+-----------------------------
+
+class Bicycle {
+
+	public int gear;
+	public int speed;
+	public Bicycle(int gear, int speed)
+	{
+		this.gear = gear;
+		this.speed = speed;
+	}
+	public void applyBrake(int decrement)
+	{
+		speed -= decrement;
+	}
+	public void speedUp(int increment)
+	{
+		speed += increment;
+	}
+	public String toString()
+	{
+		return ("No of gears are " + gear + "\n"
+				+ "speed of bicycle is " + speed);
+	}
+}
+class MountainBike extends Bicycle {
+	public int seatHeight;
+	public MountainBike(int gear, int speed,
+						int startHeight)
+	{
+		super(gear, speed);
+		seatHeight = startHeight;
+	}
+	public void setHeight(int newValue)
+	{
+		seatHeight = newValue;
+	}
+	@Override public String toString()
+	{
+		return (super.toString() + "\nseat height is "
+				+ seatHeight);
+	}
+}
+
+public class Test {
+	public static void main(String args[])
+	{
+		MountainBike mb = new MountainBike(3, 100, 25);
+		System.out.println(mb.toString());
+	}
+}
+
+--------------------------
+

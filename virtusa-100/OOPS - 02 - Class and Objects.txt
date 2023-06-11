@@ -1,0 +1,158 @@
+OOPS - 02 - Class and Objects
+
+Objects : An object is called an instance of a class
+
+syntax : className object = new className();
+eg : Bicycle touringBicycle = new Bicycle();    // here "new" is a constructor 
+
+Class: An outline
+class consists of three components : 
+    . fields       : intialize the object
+    . methods      : behaviour of the object(Reusable/optimizable)
+    . constructor  :
+    . blocks
+    . nested class and interface
+eg:
+
+class anala{
+    //field
+    int a = 5;
+    //method
+    public void talking(){
+        System.out.println("hi i'm anala");
+    }
+}
+
+
+. how to access methods and fields:
+
+USING REFERENCE : 
+
+import java.util.*;
+
+class anala{
+    //field
+    int a = 5;
+    //method
+    void talking(){
+        System.out.println("hi i'm anala");
+    }
+}
+class Main{
+    public static void main(String [] args){
+        anala sc = new anala();
+        anala bc = new anala();
+        sc.talking();
+    }
+}
+
+USING METHODS: 
+
+class Student{  
+ int rollno;  
+ String name;  
+ void insertRecord(int r, String n){  
+  rollno=r;  
+  name=n;  
+ }  
+
+ void display(){
+     System.out.println(rollno+" "+name);}  
+}  
+class TestStudent4{  
+
+ public static void main(String args[]){  
+
+  Student s1=new Student();  
+  Student s2=new Student();  
+  s1.insertRecord(05," - Anala");  
+  s2.insertRecord(33," - Alex");  
+  s1.display();  
+  s2.display();  
+ }  
+}  
+
+
+O/P : 
+5 - Anala
+33 - Alex
+
+
+class Rectangle{  
+ int length;  
+ int width;  
+
+ void insert(int l, int w){  
+  length=l;  
+  width=w;  
+ }  
+
+ void calculateArea(){System.out.println(length*width);}  
+}  
+class TestRectangle1{  
+ public static void main(String args[]){  
+  Rectangle r1=new Rectangle();  
+  Rectangle r2=new Rectangle();  
+  r1.insert(11,5);  
+  r2.insert(3,15);  
+  r1.calculateArea();  
+  r2.calculateArea();  
+}  
+}  
+
+
+class Account{
+int acc_no;
+String name;
+float amount;
+
+void insert(int a,String n,float amt){
+    acc_no=a;
+    name=n;
+    amount=amt;
+}
+
+void deposit(float amt){
+    amount=amount+amt;
+    System.out.println(amt+" deposited");
+}
+
+void withdraw(float amt){
+    if(amount<amt){
+        System.out.println("Insufficient Balance");
+        
+    }
+    else{
+        amount=amount-amt;
+        System.out.println(amt+" withdrawn");
+        
+    }
+}
+
+void checkBalance(){
+    System.out.println("Balance is: "+amount);}
+    void display(){
+        System.out.println("Account no: "+acc_no+" "+"Name : "+name+" "+amount);}
+    
+}
+
+class TestAccount{
+    public static void main(String[] args){
+        Account a1=new Account();
+        a1.insert(832345,"Anala",1000);
+        a1.display();
+        a1.checkBalance();
+        a1.deposit(40000);
+        a1.checkBalance();
+        a1.withdraw(15000);
+        a1.checkBalance();
+    }
+} 
+
+
+O/P:
+Account no: 832345 Name : Anala 1000.0Balance is: 1000.0
+40000.0 deposited
+Balance is: 41000.0
+15000.0 withdrawnBalance is: 26000.0
+

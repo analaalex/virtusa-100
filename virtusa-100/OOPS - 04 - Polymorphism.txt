@@ -1,0 +1,118 @@
+OOPS - 04 - Polymorphism
+
+polymorphism : more than one form 
+
+class name {
+  public void render() {
+    System.out.println("Rendering Polygon...");
+  }
+}
+
+class roll extends name {
+  public void render() {
+    System.out.println("roll no : 05");
+  }
+}
+
+class roll extends name {
+  public void render() {
+    System.out.println("Anala");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    roll s1 = new roll();
+    s1.render();
+    name c1 = new name();
+    c1.render();
+  }
+}
+
+-----------------------
+
+
+class Language {
+  public void displayInfo() {
+    System.out.println("Anala");
+  }
+}
+
+class Java extends Language {
+  @Override
+  public void displayInfo() {
+    System.out.println("hey, how are ya?");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Java j1 = new Java();
+    j1.displayInfo();
+    Language l1 = new Language();
+    l1.displayInfo();
+  }
+}
+
+o/p : 
+hey, how are ya?
+Anala
+
+-----------------------
+class gender {
+   public void displayInfo() {
+      System.out.println("I am a girl.");
+   }
+}
+
+class anala extends gender {
+   public void displayInfo() {
+      super.displayInfo();
+      System.out.println("Aleka");
+   }
+}
+
+class Main {
+   public static void main(String[] args) {
+      anala d1 = new anala();
+      d1.displayInfo();
+   }
+}
+
+o/p:
+I am a girl.
+Aleka
+
+-------------------------
+
+class CPU {
+    double price;
+    class Processor{
+        double cores;
+        String manufacturer;
+        double getCache(){
+            return 4.3;
+        }
+    }
+    protected class RAM{
+        double memory;
+        String manufacturer;
+        double getClockSpeed(){
+            return 5.5;
+        }
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        CPU cpu = new CPU();
+        CPU.Processor processor = cpu.new Processor();
+        CPU.RAM ram = cpu.new RAM();
+        System.out.println("Processor Cache = " + processor.getCache());
+        System.out.println("Ram Clock speed = " + ram.getClockSpeed());
+    }
+}
+
+o/p:
+Processor Cache = 4.3Ram Clock speed = 5.5
+

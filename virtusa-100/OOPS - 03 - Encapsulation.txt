@@ -1,0 +1,139 @@
+OOPS concept - 03 - Encapsulation
+
+encapsulation : Encapsulation in Java refers to integrating data (variables) and code (methods) into a single unit
+
+
+class Name {
+
+	private int age; // Private is using to hide the data
+
+	public int getAge(){
+              return age; 
+        } 
+
+	public void setAge(int age)
+	{
+		this.age = age;
+	}
+}
+
+class Main {
+	public static void main(String[] args)
+	{
+
+		Name n1 = new Name();
+
+		n1.setAge(19);
+
+		System.out.println("The age of the person is: "
+						+ n1.getAge());
+	}
+}
+
+----------------
+
+class Area {
+  int l;
+  int b;
+
+  Area(int l, int b) {
+    this.l = l;
+    this.b = b;
+  }
+
+  public void getArea() {
+    int area = l * b;
+    System.out.println("Area: " + area);
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Area rectangle = new Area(5, 6);
+    rectangle.getArea();
+  }
+}
+
+o/p:
+
+Area: 30
+
+-----------------
+class Person {
+
+  private int age;
+  public int getAge() {
+    return age;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    
+    Person p1 = new Person();
+    p1.setAge(24);
+    System.out.println("My age is " + p1.getAge());
+  }
+}
+
+--------------
+
+class Language {
+  public void displayInfo() {
+    System.out.println("Anala");
+  }
+}
+
+class Java extends Language {
+  @Override
+  public void displayInfo() {
+    System.out.println("hey, how are ya?");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Java j1 = new Java();
+    j1.displayInfo();
+    Language l1 = new Language();
+    l1.displayInfo();
+  }
+}
+
+o/p : 
+hey, how are ya?
+Anala
+
+-------------------------
+
+class name {
+  public void render() {
+    System.out.println("Rendering Polygon...");
+  }
+}
+
+class roll extends name {
+  public void render() {
+    System.out.println("roll no : 05");
+  }
+}
+
+class roll extends name {
+  public void render() {
+    System.out.println("Anala");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    roll s1 = new roll();
+    s1.render();
+    name c1 = new name();
+    c1.render();
+  }
+}
+

@@ -1,0 +1,242 @@
+using namespace std;
+void convert_to_words(char *num)
+{
+	int len = strlen(num);
+	if (len == 0) {
+		return;
+	}
+	if (len > 4) {
+        return;
+	}
+	char *single_digits[] = { "zero", "one", "two",
+							"three", "four","five",
+							"six", "seven", "eight", "nine"};
+
+	char *two_digits[] = {"", "ten", "eleven", "twelve",
+							"thirteen", "fourteen",
+							"fifteen", "sixteen",
+							"seventeen", "eighteen", "nineteen"};
+
+	char *tens_multiple[] = {"", "", "twenty", "thirty", "forty", "fifty",
+							"sixty", "seventy", "eighty", "ninety"};
+
+	char *tens_power[] = {"hundred", "thousand"};
+
+
+
+	if (len == 1) {
+		cout<<single_digits[*num - '0']<<" ";
+		return;
+	}
+
+	while (*num != '\0') {
+
+		if (len >= 3) {
+			if (*num -'0' != 0) {
+				cout<<single_digits[*num - '0']<<" ";
+				cout<<tens_power[len-3]<<" ";
+			}
+			--len;
+		}
+
+		else {
+
+			if (*num == '1') {
+				int sum = *num - '0' + *(num + 1)- '0';
+				//printf("%s\n", two_digits[sum]);
+				cout<<two_digits[sum]<<" ";
+				return;
+			}
+
+			else if (*num == '2' && *(num + 1) == '0') {
+				cout<<"twenty"<<" ";
+				return;
+			}
+			else {
+				int i = *num - '0';
+				cout<<tens_multiple[i]<<" ";
+				++num;
+				if (*num != '0')
+					cout<<single_digits[*num-'0']<<" ";
+			}
+		}
+		++num;
+	}
+}
+
+int main(void)
+{
+    string d;
+    cin>>d;
+    int n= d.length();
+    char s[n+1];
+    strcpy(s,d.c_str());
+	convert_to_words(s);
+
+
+	return 0;
+}
+
+
+input: 123
+output: one hundred twenty three 
+
+------------------------------------------
+
+import java.io.*;
+import java.util.*;
+
+class Answer{
+    public static void main(String[]args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int n = s.length();
+        int x = n/2;
+        int y = 0;
+        System.out.println(s.substring(x,n) + s.substring(y,x));
+        
+    }
+
+input: fireworks
+output: worksfire
+
+--------------------------------------
+
+import java.util.Scanner;
+
+class CapitalizeFirstLetter {
+
+    public static void main(String[] args) {
+      //  System.out.println("Enter the sentence to capitalize the first letter : ");
+        Scanner scanner = new Scanner(System.in);
+        String string = scanner.nextLine();
+        Scanner stringScanner = new Scanner(string);
+        String resultString = "";
+        while (stringScanner.hasNext()) {
+            String str = stringScanner.next();
+            resultString = resultString + str.substring(0, 1).toUpperCase() + str.substring(1) + " ";
+        }
+        System.out.println(resultString);
+    }
+}
+
+input: a quick brown fox jumps over the lazy dog
+output: A Quick Brown Fox Jumps Over The Lazy Dog 
+
+------------------------------------------
+
+mport java.util.Scanner;
+class Large_Small{
+    public static void main (String args[])
+    {
+        Scanner scan=new Scanner(System.in);
+        int min,max;
+        int n=scan.nextInt();
+        int arr[]=new int[n]; 
+       
+        for(int i=0; i<n; i++){
+           arr[i]=scan.nextInt();
+           }
+           min=arr[0];
+           max=arr[0];
+           for(int i=0; i<n; i++){
+             if(min>arr[i]){
+               min=arr[i];
+             }
+             
+             if(max<arr[i]){
+               max=arr[i];  
+             }
+           }
+           System.out.print("smallest value: "+min);
+           System.out.print("\nlargest value: "+max);
+}
+}
+
+input: 12 4 2 5 22
+output: smallest value: 2
+largest value: 22
+
+
+--------------------------------
+
+mport java.io.*;
+import java.util.*;
+import java.util.Scanner;
+class Person {
+	protected String firstName;
+	protected String lastName;
+	protected int idNumber;
+	Person(String firstName, String lastName, int identification){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.idNumber = identification;
+	}
+	
+	public void printPerson(){
+		 System.out.println(
+				"Name: " + lastName + " " + firstName 
+			+ 	"\nID: " + idNumber); 
+	}
+	 
+}
+class Student extends Person{
+	private int[] testScores;
+	
+	  public Student(String firstName, String lastName, int id, int[] testScores) {
+		 super(firstName, lastName, id);
+	          this.testScores=testScores;
+	         
+		}
+         char calculate()
+         {             
+            int i,sum=0,avg;
+            char grade;
+         for(i=0; i<testScores.length; i++)
+             sum+=testScores[i];
+         avg=sum/testScores.length;
+
+         if(avg<=100 && avg>=90)
+            grade='O';
+         else if(avg>=80&&avg<90)
+            grade='E';
+         else if(avg>=70&&avg<80)
+            grade='A';
+         else if(avg>=55&&avg<70)
+            grade='P';
+         else if(avg>=40&&avg<55)
+            grade='D';
+         else
+            grade='T';
+
+         return grade;
+     }}
+class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		String firstName = scan.next();
+		String lastName = scan.next();
+		int id = scan.nextInt();
+		int numScores = scan.nextInt();
+		int[] testScores = new int[numScores];
+		for(int i = 0; i < numScores; i++){
+			testScores[i] = scan.nextInt();
+		}
+		scan.close();
+		Student s = new Student(firstName, lastName, id, testScores);
+		s.printPerson();
+		System.out.println("Grade: " + s.calculate());
+	}}
+
+
+input:
+Shruthi
+Ramesh
+50
+5
+70 80 90 87 99
+
+output:
+Name: Ramesh Shruthi
+ID: 50
+Grade: E

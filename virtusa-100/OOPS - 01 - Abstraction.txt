@@ -1,0 +1,34 @@
+OOPS Concepts - Abstraction
+
+def : Data abstraction is the process of "hiding" certain details and showing only essential information to the user
+
+abstraction class: the object inside can only be accessed using inheritence
+
+eg:
+import java.util.*;
+import java.io.*;
+
+
+abstract class animal{
+    public abstract void animalsound();
+    public void sleep(){
+        System.out.println("zzz");
+    }
+}
+
+class pig extends animal{
+    public void animalsound(){
+        System.out.println("oink oink");
+    }
+}
+
+class Main{
+    public static void main(String[]args){
+        pig a = new pig();
+        a.animalsound();
+        a.sleep();
+    }
+}
+
+o/p: oink oink
+zzz
